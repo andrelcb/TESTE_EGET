@@ -21,6 +21,6 @@ class Tasks extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_idusers'); //user
+        return $this->belongsToMany(User::class, 'users_tasks_assigned', 'tasks_idtasks', 'users_idusers');
     }
 }

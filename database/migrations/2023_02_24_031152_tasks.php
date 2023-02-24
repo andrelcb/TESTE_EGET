@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->dateTime('start_date');
             $table->dateTime('conclusion_date');
-            $table->string('status', 2);
+            $table->string('status', 2); //CO - CONCLUIDA | EM - EM ANDAMENTO - CC CANCELADA
         });
     }
 

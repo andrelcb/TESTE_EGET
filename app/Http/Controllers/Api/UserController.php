@@ -90,4 +90,17 @@ class UserController extends Controller
             return response()->json($message->getMessage(), 401);
         }
     }
+
+    public function Tasks($id)
+    {
+        try {
+            $user = $this->user->findOrfail($id);
+            return response()->json([
+                'data' => $user->tasks
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
 }
