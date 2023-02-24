@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Validator;
 
 class TasksController extends Controller
 {
+    const STATUS_EA = 'EA';
+    const STATUS_CO = 'CO';
+    const STATUS_CA = 'CA';
+
     private $tasks;
 
     public function __construct(Tasks $tasks)
@@ -159,7 +163,7 @@ class TasksController extends Controller
             $tasks->status = $data['status']; // EM, CO, CA
             $tasks->update();
 
-            if ($data['status'] == 'CO') {
+            if ($data['status'] == self::STATUS_CO) {
                 foreach ($tasks->user as $value) {
                     JobsTaskComplete::dispatch($tasks, $value);
                 }
